@@ -9,13 +9,7 @@ import logging
 
 from pytest import FixtureRequest, Mark, fixture
 
-from . import ROOT_PATH, BUILD_ROOT_PATH
-
-EXPECT_DIRNAME: str = "_expect"
-"""
-Name of directory in which to look for expected files. May be configurable in
-the future.
-"""
+from ._const import ROOT_PATH
 
 __all__ = [
     "ComparisonFiles",
@@ -26,6 +20,20 @@ __all__ = [
     "comparison_files",
     "compare_files",
 ]
+
+BUILD_ROOT_PATH = ROOT_PATH / "build"
+"""
+Directory containing build artifacts.
+
+TODO: get from .env
+"""
+
+EXPECT_DIRNAME: str = "_expect"
+"""
+Name of directory in which to look for expected files.
+
+TODO: get from .env
+"""
 
 
 @dataclass

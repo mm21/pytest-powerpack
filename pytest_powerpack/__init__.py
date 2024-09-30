@@ -1,7 +1,17 @@
-from pathlib import Path
-import os
+"""
+A plugin containing extra batteries for pytest.
+"""
 
+from pyrollup import rollup
 from pytest import Config
+from _pytest.config.argparsing import Parser
+
+from .comparison import *
+from .utils import *
+
+from . import comparison, utils
+
+__all__ = rollup(comparison, utils)
 
 
 def pytest_configure(config: Config):
@@ -11,14 +21,9 @@ def pytest_configure(config: Config):
     )
 
 
-ROOT_PATH = Path(os.getcwd())
-"""
-Root path from which pytest is invoked. Should generally be the project root.
-"""
-
-BUILD_ROOT_PATH = ROOT_PATH / "build"
-"""
-Directory containing build artifacts. May be configurable in the future.
-"""
-
-from .comparison import *
+def pytest_addoption(parser: Parser):
+    parser.addini(
+        "powerpack_auto_newline",
+        help="Enable newline and underline test name for readability",
+        default=False,
+    )

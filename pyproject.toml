@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "pytest-powerpack"
 version = "0.1.0"
-description = "A plugin containing extra "batteries" for pytest"
+description = "A plugin containing extra batteries for pytest"
 authors = ["mm21 <mm21.dev@gmail.com>"]
 readme = "README.md"
 packages = [{include = "pytest_powerpack"}]
@@ -9,10 +9,18 @@ packages = [{include = "pytest_powerpack"}]
 [tool.poetry.dependencies]
 python = "^3.12"
 pytest = "^8.1.1"
-
+pyrollup = "^0.1.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.3.0"
+
+[tool.black]
+line-length = 80
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
+addopts = "--import-mode=importlib -s -v -rA"
+powerpack_auto_newline = true
 
 [build-system]
 requires = ["poetry-core"]

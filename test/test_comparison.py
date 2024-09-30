@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from pytest import mark
 
 from pytest_powerpack.comparison import ComparisonFiles, compare_files
