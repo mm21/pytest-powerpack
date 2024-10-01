@@ -17,13 +17,26 @@ __all__ = rollup(comparison, utils)
 def pytest_configure(config: Config):
 
     config.addinivalue_line(
-        "markers", "output_filename: name of file to be generated and compared"
+        "markers",
+        "powerpack_compare_file: name of file to be generated and compared",
     )
 
 
 def pytest_addoption(parser: Parser):
     parser.addini(
-        "powerpack_auto_newline",
-        help="Enable newline and underline test name for readability",
+        "powerpack_underline",
+        help="Enable underline under test name for readability",
         default=False,
+    )
+
+    parser.addini(
+        "powerpack_expect_folder",
+        help="Name of folder in which to place expected files for comparisons",
+        default="_expect",
+    )
+
+    parser.addini(
+        "powerpack_build_folder",
+        help="Name of folder in which to place generated files for comparisons; should be ignored by source control",
+        default="__build__",
     )

@@ -20,7 +20,7 @@ line-length = 80
 [tool.pytest.ini_options]
 testpaths = ["test"]
 addopts = "--import-mode=importlib -s -v -rA"
-powerpack_auto_newline = true
+powerpack_underline = true
 
 [build-system]
 requires = ["poetry-core"]

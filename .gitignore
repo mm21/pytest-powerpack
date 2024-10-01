@@ -7,3 +7,4 @@
 .history
 build
 dist
+__build__
