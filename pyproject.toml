@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pytest-powerpack"
-version = "0.1.2"
+version = "0.1.3"
 description = "A plugin containing extra batteries for pytest"
 authors = ["mm21 <mm21.dev@gmail.com>"]
 readme = "README.md"
