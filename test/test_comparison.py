@@ -9,7 +9,7 @@ def test_hello(powerpack_comparison_files: ComparisonFiles):
     Generate a simple test file and compare against expected content.
     """
 
-    with open(powerpack_comparison_files.build_file, "w") as fh:
+    with open(powerpack_comparison_files.out_file, "w") as fh:
         fh.write("Hello, world!")
 
     compare_files(powerpack_comparison_files)

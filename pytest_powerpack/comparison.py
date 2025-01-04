@@ -13,7 +13,7 @@ __all__ = [
     "ComparisonFiles",
     "powerpack_out_path",
     "powerpack_expect_path",
-    "powerpack_build_file",
+    "powerpack_out_file",
     "powerpack_expect_file",
     "powerpack_comparison_files",
     "compare_files",
@@ -27,7 +27,7 @@ class ComparisonFiles:
     """
 
     expect_file: Path
-    build_file: Path
+    out_file: Path
 
 
 @fixture
@@ -83,7 +83,7 @@ def powerpack_expect_file(
 
 
 @fixture
-def powerpack_build_file(
+def powerpack_out_file(
     request: FixtureRequest, powerpack_out_path: Path
 ) -> Path:
     """
@@ -97,12 +97,12 @@ def powerpack_build_file(
 
 @fixture
 def powerpack_comparison_files(
-    powerpack_expect_file: Path, powerpack_build_file: Path
+    powerpack_expect_file: Path, powerpack_out_file: Path
 ) -> ComparisonFiles:
     """
     Wrapper for getting output and expected files.
     """
-    return ComparisonFiles(powerpack_expect_file, powerpack_build_file)
+    return ComparisonFiles(powerpack_expect_file, powerpack_out_file)
 
 
 def compare_files(comparison_files: ComparisonFiles):
@@ -110,10 +110,10 @@ def compare_files(comparison_files: ComparisonFiles):
     Convenience function to compare the generated vs expected data.
     """
     logging.debug(
-        f"Comparing: {comparison_files.expect_file} <-> {comparison_files.build_file}"
+        f"Comparing: {comparison_files.expect_file} <-> {comparison_files.out_file}"
     )
 
-    with comparison_files.expect_file.open() as expect_fh, comparison_files.build_file.open() as build_fh:
+    with comparison_files.expect_file.open() as expect_fh, comparison_files.out_file.open() as build_fh:
         expect_str: str = expect_fh.read()
         build_str: str = build_fh.read()
 
