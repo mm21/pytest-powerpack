@@ -36,7 +36,7 @@ def pytest_addoption(parser: Parser):
     )
 
     parser.addini(
-        "powerpack_build_folder",
+        "powerpack_out_folder",
         help="Name of folder in which to place generated files for comparisons; should be ignored by source control",
-        default="__build__",
+        default="__out__",
     )
