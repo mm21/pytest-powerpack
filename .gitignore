@@ -1,4 +1,5 @@
 **/__pycache__
+__out__
 .pytest_cache
 .coverage
 .env
@@ -7,4 +8,3 @@
 .history
 build
 dist
-__build__
